@@ -4,93 +4,66 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 /**
-Made by jeremy, needs testing with beacons!!!!!!!!!
+Made by jeremy
  */
-@Autonomous(name = "AutoBlueFarRampBeacon", group = "Autonomous")
+@Autonomous(name = "AutoBlueFarRampBeacon NO NAV", group = "Autonomous")
 public class AutoBlueFarRampBeacon extends LinearOpMode
 {
     //assumes that front omni wheels is on the bottom edge of the 2nd tle from the corner of the alliance splitter, meaning it's farther from alliance's robot from the ramp
     private OmniDriveBot robot = new OmniDriveBot();
     public void runOpMode() throws InterruptedException
     {
+        boolean firstBeaconIsBlueFirst = true;
         robot.init(hardwareMap);
 
         waitForStart();
 
         //A suggestion but add part to shoot particles into center washing machine
         while(!gamepad1.a){}
-        robot.driveStraight(90, -153);
+        robot.driveStraight(90, -153,.87);
         sleep(100);
         while(!gamepad1.a){}
         robot.spin(90);
         sleep(100);
         while(!gamepad1.a){}
-        robot.driveStraight(29,90);
+        robot.driveStraight(29,90,.87);
 
-        /* test if color sensors can get beacon color; basically test code
-        telemetry.addData("BLUE:", robot.getSensorBlue());
-        telemetry.addData("RED:", robot.getSensorRed());
-        telemetry.addData("Seeing RED", robot.isDetectingRed());
-        telemetry.addData("Seeing BLUE", robot.isDetectingBlue());
-        telemetry.addData("HUE", robot.getSensorHue());
-        sleep(10000);\
-        */
-
-        /*
-
-        //assumes robot is on the left side of the beacon from the side with battery
-        if(robot.isDetectingRed() && !robot.isDetectingBlue())
-        {
-            //robot drive at 90 deg, press button
-            robot.driveStraight(8, -90);
-            //robot goes back to area before, go back to position before, -90 deg
-            robot.driveStraight(8,90);
-        }
-        else if (robot.isDetectingBlue()) //robot goes to the left, press beacon, go back to position on y plane, go back to original position on x
-        {
-            robot.driveStraight(6, 0);
-            robot.driveStraight(8, -90);
-            robot.driveStraight(8,90);
-            robot.driveStraight(6,180);
-        }
-
-        */
         while(!gamepad1.a){}
         //Next beacon,
         sleep(100);
-
         while(!robot.isDetectingBlue())
         {
-            telemetry.addData("IS blue?", robot.isDetectingBlue());
-            telemetry.addData("HUE:", robot.getSensorHue());
-            robot.driveStraight(1,180);
+            if(robot.isDetectingRed())
+            {
+                firstBeaconIsBlueFirst = false;
+            }
+            robot.driveStraight(1,180,.87);
+            sleep(200);
+        }
+        sleep(100);
+
+        if(firstBeaconIsBlueFirst)
+        {
+            robot.driveStraight(3,180,.87);
+        }
+
+        while(!gamepad1.a){}
+        robot.driveStraight(3,90,.87);
+        sleep(100);
+        robot.driveStraight(1,-90,.87);
+
+        while(!gamepad1.a){}
+        robot.driveStraight(40,180,.87);
+
+        while(!gamepad1.a){}
+        while(!robot.isDetectingBlue())
+        {
+            robot.driveStraight(1,180,.87);
             telemetry.update();
             sleep(200);
         }
-     //   robot.driveStraight(48, 180);
-        sleep(100);
 
         while(!gamepad1.a){}
-        robot.driveStraight(3,90);
-        //Same logic as before, the robot's color sensor is assumed on the left side(relative to the side with the battery)
-        /*
-        if(robot.isDetectingRed() && !robot.isDetectingBlue())
-        {
-            //robot drive at 90 deg, press button
-            robot.driveStraight(8, -90);
-            //robot goes back to area before, go back to position before, -90 deg
-            robot.driveStraight(8,90);
-        }
-        else if (robot.isDetectingBlue())
-        {
-            robot.driveStraight(6, 0);
-            robot.driveStraight(8, -90);
-            robot.driveStraight(8,90);
-            robot.driveStraight(6,180);
-
-        }
-        */
-
-        //maybe hit ball last?????????
+        robot.driveStraight(3,90,.87);
     }
 }
