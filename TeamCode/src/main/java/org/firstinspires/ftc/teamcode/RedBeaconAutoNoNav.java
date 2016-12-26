@@ -26,9 +26,16 @@ public class RedBeaconAutoNoNav extends LinearOpMode
         }
         robot.spin(92);
         sleep(100);
-        telemetry.addData("RED?", robot.isDetectingRed());
-        telemetry.addData("BLUE?", robot.isDetectingBlue());
-        telemetry.update();
-        sleep(10000);
+        for(int i=0; i<20; i++)
+        {
+            robot.driveStraight(1, 0, .5);
+            sleep(500);
+            if (robot.isDetectingRed() == true)
+            {
+                robot.driveStraight(1.5, 90, 1);
+                sleep(100);
+                robot.driveStraight(1.5, -90, .75);
+            }
+        }
     }
 }
