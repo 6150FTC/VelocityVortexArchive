@@ -17,57 +17,41 @@ public class AutoRedBeaconFarRampBeacon extends LinearOpMode
 
         waitForStart();
 
-        //Suggest that first part of auto should shoot balls into washing machine???
-        robot.driveStraight(103, 153);
+        //A suggestion but add part to shoot particles into center washing machine
+        while(!gamepad1.a){}
+        robot.driveStraight(90, 153,.87);
         sleep(100);
+        while(!gamepad1.a){}
         robot.spin(90);
         sleep(100);
+        while(!gamepad1.a){}
+        robot.driveStraight(29,90,.87);
 
-        /* test if color sensors can get beacon color; basically test code
-        telemetry.addData("BLUE:", robot.getSensorBlue());
-        telemetry.addData("RED:", robot.getSensorRed());
-        telemetry.addData("Seeing RED", robot.isDetectingRed());
-        telemetry.addData("Seeing BLUE", robot.isDetectingBlue());
-        telemetry.addData("HUE", robot.getSensorHue());
-        sleep(10000);\
-        */
-        /*
-        //assumes robot is on the left side of the beacon from the side with battery
-        if(robot.isDetectingRed() && !robot.isDetectingBlue())
-        {
-            //robot drive at 90 deg, press button
-            robot.driveStraight(8, 90);
-            //robot goes back to area before, go back to position before, -90 deg
-            robot.driveStraight(8,-90);
-        }
-        else if (robot.isDetectingBlue()) //robot goes to the left, press beacon, go back to position on y plane, go back to original position on x
-        {
-            robot.driveStraight(6, 180);
-            robot.driveStraight(8, 90);
-            robot.driveStraight(8,-90);
-            robot.driveStraight(6,0);
-        }
-
+        while(!gamepad1.a){}
         //Next beacon,
         sleep(100);
-        robot.driveStraight(48, 0);
-        sleep(100);
+        while(!robot.isDetectingRed())
+        {
+            robot.driveStraight(1,0,.87);
+            sleep(100);
+        }
 
-        //Same logic as before, the robot's color sensor is assumed on the left side(relative to the side with the battery)
-        if(robot.isDetectingRed() && !robot.isDetectingBlue())
+        while(!gamepad1.a){}
+        robot.driveStraight(3,90,.87);
+        sleep(100);
+        robot.driveStraight(1,-90,.87);
+
+        while(!gamepad1.a){}
+        robot.driveStraight(40,0,.87);
+
+        while(!gamepad1.a){}
+        while(!robot.isDetectingBlue())
         {
-            //robot drive at 90 deg, press button
-            robot.driveStraight(8, 90);
-            //robot goes back to area before, go back to position before, -90 deg
-            robot.driveStraight(8,-90);
+            robot.driveStraight(1,0,.87);
+            sleep(100);
         }
-        else if (robot.isDetectingBlue())
-        {
-            robot.driveStraight(6, 180);
-            robot.driveStraight(8, 90);
-            robot.driveStraight(8,-90);
-            robot.driveStraight(6,0);
-        }
-        */
+
+        while(!gamepad1.a){}
+        robot.driveStraight(3,90,.87);
     }
 }
