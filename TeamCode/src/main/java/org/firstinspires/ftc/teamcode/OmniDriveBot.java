@@ -37,7 +37,8 @@ public class OmniDriveBot implements DriveTrainInterface
     private float shooterPowerOne;
     private float shooterPowerTwo;
     private float shooterPitchServoPos;
-    private float scooperServoPos;
+    private double scooperServoPos;
+    private double scooperStop = 0.497;
 
     ColorSensor beaconColorSensor;
     DeviceInterfaceModule cdim;
@@ -99,7 +100,7 @@ public class OmniDriveBot implements DriveTrainInterface
         shooterMotorTwo.setMaxSpeed(3000);
 
         shooterPitchServo.setPosition(1.0f);
-        scooperServo.setPosition(.5f);
+        scooperServo.setPosition(scooperStop);
 
         //bLedOn represents the state of the LED.
         bLedOn = true;
@@ -172,6 +173,7 @@ public class OmniDriveBot implements DriveTrainInterface
         shooterPowerTwo = 0;
         shooterPowerOne = 0;
         shooterPitchServoPos = 0.5f;
+        scooperServoPos = scooperStop;
     }
 
     public void resetEncoders()
@@ -346,7 +348,7 @@ public class OmniDriveBot implements DriveTrainInterface
 
     public float getShooterPitchServoPos() { return shooterPitchServoPos; }
 
-    public float getScooperServoPos() { return scooperServoPos; }
+    public double getScooperServoPos() { return scooperServoPos; }
 
     public int getSensorRed()
     {
