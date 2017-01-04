@@ -39,16 +39,17 @@ public class AutoBlueFarRampBeacon extends LinearOpMode
         {
             if (robot.isDetectingRed())
                 isBlueOnRight = false;
+
             robot.driveStraight(1,180,.87);
             sleep(100);
         }
         sleep(100);
 
         if (isBlueOnRight)
-            robot.driveStraight(3,180,.87);
+         //   robot.driveStraight(3,180,.87);
 
         while(!gamepad1.a){}
-        robot.driveStraight(3,90,.87);
+        robot.driveStraight(5,90,.75);
         sleep(100);
         robot.driveStraight(1,-90,.87);
 
@@ -60,10 +61,10 @@ public class AutoBlueFarRampBeacon extends LinearOpMode
             robot.driveStraight(22, 180, .87);
 
         robot.driveStraight(9, 90,.38);
-
+        sleep(2000);
         while(!gamepad1.a){}
-        robot.driveStraight(3,-90,.87);
-        robot.driveStraight(19, 180, .87);
+        robot.driveStraight(1.8,-90,.87);
+        robot.driveStraight(16, 180, .87);
 
         while(!gamepad1.a){}
         isBlueOnRight = true;
@@ -71,10 +72,14 @@ public class AutoBlueFarRampBeacon extends LinearOpMode
         {
             if (robot.isDetectingRed())
                 isBlueOnRight = false;
+
             robot.driveStraight(1,180,.87);
             telemetry.update();
             sleep(200);
         }
+
+        if (isBlueOnRight)
+            robot.driveStraight(3,180,.87);
 
         while(!gamepad1.a){}
         robot.driveStraight(6,90,.87);
@@ -84,22 +89,14 @@ public class AutoBlueFarRampBeacon extends LinearOpMode
         if (isBlueOnRight)
         {
             robot.driveStraight(64, -55, .95);
-            /*
-            robot.driveStraight(4,-90,.87);
-            robot.spin(115);
-            while(!gamepad1.a){}
-            robot.driveStraight(55,180,.87);
-            */
+            robot.spin(180);
+            robot.driveStraight(8, 125, .95);
         }
         else if (!isBlueOnRight)
         {
             robot.driveStraight(70,-48,.95);
-            /*
-            robot.driveStraight(4,-90);
-            robot.spin(135);
-            while(!gamepad1.a){}
-            robot.driveStraight(59,180,.87);
-            */
+            robot.spin(180);
+            robot.driveStraight(8, 132, .95);
         }
     }
 }
