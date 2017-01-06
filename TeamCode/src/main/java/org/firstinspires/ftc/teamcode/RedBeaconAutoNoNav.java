@@ -40,7 +40,7 @@ public class RedBeaconAutoNoNav extends LinearOpMode
         sleep(100);
         robot.driveStraight(10, 90, .20);
         sleep(100);
-        robot.driveStraight(4, -90, .75);
+        robot.driveStraight(3.5, -90, .75);
         sleep(100);
         robot.driveStraight(28, 0, .75);
         sleep(100);
