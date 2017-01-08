@@ -13,22 +13,19 @@ public class AutoBlueFarRampBeacon extends LinearOpMode
     private OmniDriveBot robot = new OmniDriveBot();
     public void runOpMode() throws InterruptedException
     {
-        boolean isBlueOnRight = true;
-//      short timesScanned = 0; MAy be needed to make it so thath robot doesn't shimmy/scan until it hits wall
+        int timesScanned = 0;
         robot.init(hardwareMap);
-
         waitForStart();
 
         //A suggestion but add part to shoot particles into center washing machine
         while(!gamepad1.a){}
-        /*load balls, needs testing
-
-         */
         robot.driveStraight(90, -153,.87);
         sleep(100);
+
         while(!gamepad1.a){}
         robot.spin(90);
         sleep(100);
+
         while(!gamepad1.a){}
         robot.driveStraight(29,90,.87);
 
@@ -37,16 +34,13 @@ public class AutoBlueFarRampBeacon extends LinearOpMode
         sleep(100);
         while(!robot.isDetectingBlue())
         {
-            if (robot.isDetectingRed())
-                isBlueOnRight = false;
+            if (timesScanned > 17)
+                break;
 
+            timesScanned++;
             robot.driveStraight(1,180,.87);
             sleep(100);
         }
-        sleep(100);
-
-        if (isBlueOnRight)
-         //   robot.driveStraight(3,180,.87);
 
         while(!gamepad1.a){}
         robot.driveStraight(5,90,.75);
@@ -54,45 +48,39 @@ public class AutoBlueFarRampBeacon extends LinearOpMode
         robot.driveStraight(1,-90,.87);
 
         while(!gamepad1.a){}
-        //robot.driveStraight(40,180,.87);
-        if (isBlueOnRight)
-            robot.driveStraight(27, 180, .87);
-        else if (!isBlueOnRight)
-            robot.driveStraight(22, 180, .87);
-
-        robot.driveStraight(9, 90,.38);
+        robot.driveStraight(31 - timesScanned, 180, .87);
+        robot.driveStraight(9, 90, .2);
         sleep(2000);
-        while(!gamepad1.a){}
-        robot.driveStraight(1.8,-90,.87);
-        robot.driveStraight(16, 180, .87);
 
         while(!gamepad1.a){}
-        isBlueOnRight = true;
+        robot.driveStraight(1.5,-90,.87);
+        sleep(100);
+        robot.driveStraight(15, 180, .87);
+
+        while(!gamepad1.a){}
+        timesScanned = 0;
         while(!robot.isDetectingBlue())
         {
-            if (robot.isDetectingRed())
-                isBlueOnRight = false;
+            if (timesScanned > 17)
+                break;
 
+            timesScanned++;
             robot.driveStraight(1,180,.87);
-            telemetry.update();
-            sleep(200);
+            sleep(100);
         }
 
-        if (isBlueOnRight)
-            robot.driveStraight(3,180,.87);
-
         while(!gamepad1.a){}
-        robot.driveStraight(6,90,.87);
+        robot.driveStraight(8,90,.75);
         sleep(100);
 
         while(!gamepad1.a){}
-        if (isBlueOnRight)
+        if (timesScanned <= 4)
         {
             robot.driveStraight(64, -55, .95);
             robot.spin(180);
             robot.driveStraight(8, 125, .95);
         }
-        else if (!isBlueOnRight)
+        else
         {
             robot.driveStraight(70,-48,.95);
             robot.spin(180);
