@@ -18,73 +18,75 @@ public class AutoBlueFarRampBeacon extends LinearOpMode
         waitForStart();
 
         //A suggestion but add part to shoot particles into center washing machine
-        while(!gamepad1.a){}
+
         robot.driveStraight(90, -153,.87);
+        robot.stop();
         sleep(100);
 
-        while(!gamepad1.a){}
         robot.spin(90);
+        robot.stop();
         sleep(100);
 
-        while(!gamepad1.a){}
-        robot.driveStraight(29,90,.87);
+        robot.driveStraight(30,90,.87);
+        robot.stop();
 
-        while(!gamepad1.a){}
-        //Next beacon,
         sleep(100);
         while(!robot.isDetectingBlue())
         {
-            if (timesScanned > 17)
+            if (timesScanned > 14)
                 break;
 
             timesScanned++;
             robot.driveStraight(1,180,.87);
-            sleep(100);
         }
 
-        while(!gamepad1.a){}
+
         robot.driveStraight(5,90,.75);
+        robot.stop();
         sleep(100);
         robot.driveStraight(1,-90,.87);
+        robot.stop();
 
-        while(!gamepad1.a){}
-        robot.driveStraight(31 - timesScanned, 180, .87);
+
+        robot.driveStraight(29 - timesScanned, 180, .87);
+        robot.stop();
         robot.driveStraight(9, 90, .2);
+        robot.stop();
         sleep(2000);
 
-        while(!gamepad1.a){}
-        robot.driveStraight(1.5,-90,.87);
+        robot.driveStraight(1,-90,.87);
+        robot.stop();
         sleep(100);
         robot.driveStraight(15, 180, .87);
+        robot.stop();
+        robot.spin(-7);
+        robot.stop();
 
-        while(!gamepad1.a){}
         timesScanned = 0;
         while(!robot.isDetectingBlue())
         {
-            if (timesScanned > 17)
+            if (timesScanned > 10)
                 break;
 
             timesScanned++;
             robot.driveStraight(1,180,.87);
-            sleep(100);
         }
 
-        while(!gamepad1.a){}
+        robot.stop();
         robot.driveStraight(8,90,.75);
         sleep(100);
 
-        while(!gamepad1.a){}
         if (timesScanned <= 4)
         {
             robot.driveStraight(64, -55, .95);
             robot.spin(180);
-            robot.driveStraight(8, 125, .95);
+            robot.driveStraight(9, 118, .95);
         }
         else
         {
             robot.driveStraight(70,-48,.95);
             robot.spin(180);
-            robot.driveStraight(8, 132, .95);
+            robot.driveStraight(9, 120, .95);
         }
     }
 }
