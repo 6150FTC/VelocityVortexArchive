@@ -62,7 +62,7 @@ public class AutoRedBeaconFarRampBeacon extends LinearOpMode
         timesScanned = 0;
         while(!robot.isDetectingRed())
         {
-            if (timesScanned > 17)
+            if (timesScanned > 14)
                 break;
 
             robot.driveStraight(1,0,.87);
