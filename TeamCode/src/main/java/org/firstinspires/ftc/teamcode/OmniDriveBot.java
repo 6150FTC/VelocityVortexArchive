@@ -21,6 +21,7 @@ public class OmniDriveBot implements DriveTrainInterface
     private DcMotor bL = null;
     private DcMotor bR = null;
     private DcMotor lifterMotor = null;
+    private DcMotor capBallMotor = null;
     private DcMotor shooterMotorOne = null;
     private DcMotor shooterMotorTwo = null;
     private Servo scooperServo = null;
@@ -34,6 +35,7 @@ public class OmniDriveBot implements DriveTrainInterface
     private float bRPower;
     private float bLPower;
     private float lifterPower;
+    private float capBallPower;
     private float shooterPowerOne;
     private float shooterPowerTwo;
     private float shooterPitchServoPos;
@@ -64,6 +66,7 @@ public class OmniDriveBot implements DriveTrainInterface
         bL = hardwareMap.dcMotor.get("backLeft");
         bR = hardwareMap.dcMotor.get("backRight");
         lifterMotor = hardwareMap.dcMotor.get("lifterMotor");
+        capBallMotor = hardwareMap.dcMotor.get("capBallMotor");
         shooterMotorOne = hardwareMap.dcMotor.get("shooterMotorOne");
         shooterMotorTwo = hardwareMap.dcMotor.get("shooterMotorTwo");
         scooperServo = hardwareMap.servo.get("scooperServo");
@@ -154,6 +157,7 @@ public class OmniDriveBot implements DriveTrainInterface
         bR.setPower(bRPower);
         bL.setPower(bLPower);
         lifterMotor.setPower(lifterPower);
+        capBallMotor.setPower(capBallPower);
         shooterMotorOne.setPower(shooterPowerOne);
         shooterMotorTwo.setPower(shooterPowerTwo);
         scooperServo.setPosition(scooperServoPos);
@@ -170,6 +174,7 @@ public class OmniDriveBot implements DriveTrainInterface
         bLPower = 0;
         bRPower = 0;
         lifterPower = 0;
+        capBallPower = 0;
         shooterPowerTwo = 0;
         shooterPowerOne = 0;
         shooterPitchServoPos = 0.5f;
@@ -342,6 +347,8 @@ public class OmniDriveBot implements DriveTrainInterface
 
     public float getLifterPower() {return lifterPower; }
 
+    public float getCapBallPower() { return capBallPower; }
+
     public float getShooterPowerOne() {return shooterPowerOne; }
 
     public float getShooterPowerTwo() {return shooterPowerTwo; }
@@ -363,6 +370,9 @@ public class OmniDriveBot implements DriveTrainInterface
 
     public void setLifterPower(float pow)
     { lifterPower = pow; }
+
+    public void setCapBallPower(float pow)
+    { capBallPower = pow; }
 
     public void setShooterPowerOne(float pow)
     { shooterPowerOne = pow; }
@@ -392,6 +402,7 @@ public class OmniDriveBot implements DriveTrainInterface
     public void stopAttachments()
     {
         lifterPower = 0;
+        capBallPower = 0;
         shooterPowerOne = 0;
         shooterPowerTwo = 0;
         scooperServoPos = 0.5f;
