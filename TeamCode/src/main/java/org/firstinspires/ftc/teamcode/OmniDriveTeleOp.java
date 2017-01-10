@@ -61,11 +61,15 @@ public class OmniDriveTeleOp extends OpMode
         //shooter pitch controls
         if(gamepad2.dpad_up == true)
         {
-            robot.setShooterPitchServoPos(0.5f);
+            robot.setCapBallPower(1.0f);
         }
         else if(gamepad2.dpad_down == true)
         {
-            robot.setShooterPitchServoPos(1.0f);
+            robot.setCapBallPower(-1.0f);
+        }
+        else
+        {
+            robot.setCapBallPower(0);
         }
 
         if(gamepad2.a == true)
