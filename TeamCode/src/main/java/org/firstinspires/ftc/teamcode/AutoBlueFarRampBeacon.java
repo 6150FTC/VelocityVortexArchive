@@ -77,16 +77,11 @@ public class AutoBlueFarRampBeacon extends LinearOpMode
         sleep(100);
 
         if (timesScanned <= 4)
-        {
             robot.driveStraight(64, -55, .95);
-            robot.spin(180);
-            robot.driveStraight(9, 118, .95);
-        }
         else
-        {
             robot.driveStraight(70,-48,.95);
-            robot.spin(180);
-            robot.driveStraight(9, 120, .95);
-        }
+
+        robot.spin(180);
+        robot.driveStraight(9, 119, .95);
     }
 }
