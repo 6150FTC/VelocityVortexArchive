@@ -28,29 +28,30 @@ public class AutoRedBeaconFarRampBeacon extends LinearOpMode
         robot.spin(90);
         sleep(100);
 
-        robot.driveStraight(30,90,.87);
+        robot.driveStraight(34,90,.87);
 
+        robot.spin(11);
         //Next beacon,
         sleep(100);
         while(!robot.isDetectingRed())
         {
             if (timesScanned > 14)
                 break;
-
             timesScanned++;
             robot.driveStraight(1,0,.87);
         }
-
-        robot.driveStraight(5,90,.87);
-        robot.driveStraight(1,-90,.87);
+        robot.spin(7);
+        robot.driveStraight(.9, 180, .87);
+        robot.driveStraight(8,90,.5);
+        robot.driveStraight(2.3,-90,.39);
 
         robot.driveStraight(29 - timesScanned, 0, .87);
-        robot.driveStraight(9, 90,.2);
+        robot.driveStraight(12, 90,.2);
         sleep(2000);
 
-        robot.driveStraight(1,-90,.87);
+        robot.driveStraight(6.7,-90,.8);
         robot.driveStraight(15, 0, .87);
-        robot.spin(-7);
+        robot.spin(4);
 
         timesScanned = 0;
         while(!robot.isDetectingRed())
@@ -58,18 +59,26 @@ public class AutoRedBeaconFarRampBeacon extends LinearOpMode
             if (timesScanned > 10)
                 break;
 
+            timesScanned++;
             robot.driveStraight(1,0,.87);
         }
-
-        robot.driveStraight(8,90,.87);
+        robot.driveStraight(2, 180, .87);
+        robot.driveStraight(8,90,.5);
         sleep(100);
 
-        if (timesScanned <= 4)
-            robot.driveStraight(64, -145, .95);
-        else
-            robot.driveStraight(70,-138,.95);
+        telemetry.addData("Times scanned = ", timesScanned);
+        telemetry.update();
 
+        if (timesScanned <= 4)
+        {
+            robot.driveStraight(67, -135, .87);
+        }
+        else
+        {
+            robot.driveStraight(73, -144, .87);
+        }
         robot.spin(180);
-        robot.driveStraight(9, 47, .95);
+        robot.driveStraight(9, 120, .95);
     }
+
 }
