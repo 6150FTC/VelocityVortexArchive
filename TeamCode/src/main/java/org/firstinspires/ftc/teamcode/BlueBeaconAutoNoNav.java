@@ -15,45 +15,48 @@ public class BlueBeaconAutoNoNav extends LinearOpMode
     {
         robot.init(hardwareMap);
         waitForStart();
+        //robot.driveStraight(2, -90, 0.25);
+        sleep(100);
         robot.driveStraight(48, -135, .75);
         sleep(100);
-        robot.driveStraight(4, -90);
+        robot.driveStraight(22, 180, .75);
         sleep(100);
-        robot.driveStraight(21, 180, .75);
-        sleep(100);
-        robot.spin(92);
+        robot.spin(75);
         sleep(100);
         int forwardCount = 0;
         for(int i=0; i<20; i++)
         {
-            robot.driveStraight(.75, 180, .5);
+            robot.driveStraight(.75, 180, .37);
             forwardCount++;
             sleep(250);
             if (robot.isDetectingBlue() == true)
             {
-                robot.driveStraight(3, 90, .75);
+                robot.driveStraight(1.5, 180, .37);
+                robot.driveStraight(3, 90, .37);
                 sleep(100);
-                robot.driveStraight(2, -90, .75);
+                robot.driveStraight(2, -90, .37);
                 break;
             }
         }
         sleep(3000);
         robot.driveStraight(34-(.75*forwardCount), -180, .75);
         sleep(100);
-        robot.driveStraight(10, 90, .20);
+        robot.driveStraight(18, 90, .25);
         sleep(100);
-        robot.driveStraight(4, -90, .50);
+        robot.driveStraight(2, -90, .75);
         sleep(100);
         robot.driveStraight(14, -180, .75);
+        robot.spin(-7.5);
         for(int i=0; i<20; i++)
         {
-            robot.driveStraight(1, -180, .5);
+            robot.driveStraight(1, -180, .37);
             sleep(250);
             if (robot.isDetectingBlue() == true)
             {
-                robot.driveStraight(3, 90, .75);
+                robot.driveStraight(1.5, 180, .37);
+                robot.driveStraight(9, 90, .37);
                 sleep(100);
-                robot.driveStraight(2, -90, .75);
+                robot.driveStraight(2, -90, .37);
                 break;
             }
         }
