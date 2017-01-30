@@ -18,6 +18,8 @@ public class ShootFromWallAuto extends LinearOpMode
         waitForStart();
 
         //sleep(15000);
+        robot.stopAttachments();
+        robot.drive();
         robot.setShooterPowerOne(0.60f);
         robot.setShooterPowerTwo(-0.60f);
         robot.drive();
@@ -28,11 +30,11 @@ public class ShootFromWallAuto extends LinearOpMode
         sleep(4000);
         robot.stopAttachments();
         robot.drive();
-        robot.driveStraight(54, 180);
-        sleep(100);
-        robot.spin(-180);
-        sleep(100);
-        robot.driveStraight(8.5, 0);
-        robot.stop();
+        //robot.driveStraight(54, 180);
+        //sleep(100);
+        //robot.spin(-180);
+        //sleep(100);
+        //robot.driveStraight(8.5, 0);
+        //robot.stop();
     }
 }

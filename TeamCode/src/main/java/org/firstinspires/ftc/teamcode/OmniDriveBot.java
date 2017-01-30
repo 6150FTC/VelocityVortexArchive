@@ -417,9 +417,9 @@ public class OmniDriveBot implements DriveTrainInterface
     //Hue color value visual: https://i.stack.imgur.com/YOBFy.png
     public boolean isDetectingBlue()
     {
-        if(getSensorHue() > 180 && getSensorHue() < 265 ) //if hue is between 180 and 265, it is blue
+        if(getSensorHue() > 180 && getSensorHue() < 210/*265*/ ) //if hue is between 180 and 265, it is blue
         {
-            if (beaconColorSensor.alpha() >= 150)
+            if (beaconColorSensor.alpha() >= 850)
             {
                 return true;
             }
@@ -429,9 +429,9 @@ public class OmniDriveBot implements DriveTrainInterface
 
     public boolean isDetectingRed()
     {
-        if(getSensorHue() < 25 || getSensorHue() > 330 && getSensorHue() < 360) //hue is between 330 and 360 and if it's is less than 25, it's red
+        if(getSensorHue() <= 25 || getSensorHue() > 350 && getSensorHue() < 360) //hue is between 330 and 360 and if it's is less than 25, it's red
         {
-            if (beaconColorSensor.alpha() >= 150)
+            if (beaconColorSensor.alpha() >= 750)
             {
                 return true;
             }
