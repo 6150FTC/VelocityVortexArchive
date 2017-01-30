@@ -23,18 +23,24 @@ public class OmniDriveTeleOp extends OpMode
     public void loop()
     {
         //driver 1 controls
-        robot.setLeftYIn(gamepad1.left_stick_y);
-        robot.setLeftXIn(gamepad1.left_stick_x);
-        robot.setRightXIn(gamepad1.right_stick_x);
-
-        /*if(gamepad1.left_bumper == true)
+        if(gamepad1.left_bumper == true)
         {
-            robot.spin(90);
+            robot.setLeftYIn(gamepad1.left_stick_y/2);
+            robot.setLeftXIn(gamepad1.left_stick_x/2);
+            robot.setRightXIn(gamepad1.right_stick_x/2);
         }
         else if(gamepad1.right_bumper == true)
         {
-            robot.spin(-90);
-        }*/
+            robot.setLeftYIn(gamepad1.left_stick_y/2);
+            robot.setLeftXIn(gamepad1.left_stick_x/2);
+            robot.setRightXIn(gamepad1.right_stick_x/2);
+        }
+        else
+        {
+            robot.setLeftYIn(gamepad1.left_stick_y);
+            robot.setLeftXIn(gamepad1.left_stick_x);
+            robot.setRightXIn(gamepad1.right_stick_x);
+        }
 
         //driver 2 controls
         //sets all attachments to stop
